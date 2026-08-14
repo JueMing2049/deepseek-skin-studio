@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek Skin Studio · 给智能换一身衣服</title>
+<meta name="description" content="DeepSeek Harness 换肤工作室：一张图一套皮肤。三通道注入（书签/CDP/原生插件）+ 可视化工坊 + 13 套内置主题 + DSH-SKIN-SPEC 导出。社区项目。">
+<style>
+:root{--bg:#050d1a;--panel:#0b1a2e;--border:#16304e;--text:#e6f0ff;--muted:#8fa8cc;--accent:#2f6fe4;--accent2:#38bdf8;--accent3:#7dd3fc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);background-image:radial-gradient(1200px 600px at 85% -10%,rgba(56,189,248,.14),transparent 60%),radial-gradient(800px 500px at -10% 40%,rgba(47,111,228,.12),transparent 55%);color:var(--text);font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px}
+.logo{font-size:64px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+h1{font-size:clamp(26px,4.5vw,44px);margin:18px 0 10px;letter-spacing:.02em}
+h1 span{background:linear-gradient(90deg,#7dd3fc,#38bdf8,#2f6fe4);-webkit-background-clip:text;background-clip:text;color:transparent}
+p.sub{color:var(--muted);max-width:640px;font-size:16px;line-height:1.8}
+.badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px 0}
+.badge{border:1px solid var(--border);background:var(--panel);border-radius:999px;padding:6px 16px;font-size:13px;color:var(--muted)}
+.badge b{color:var(--accent3)}
+.cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+a.btn{display:inline-block;padding:12px 26px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:.2s}
+a.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 30px rgba(47,111,228,.35)}
+a.primary:hover{filter:brightness(1.12)}
+a.ghost{border:1px solid var(--border);color:var(--accent3);background:var(--panel)}
+a.ghost:hover{border-color:var(--accent2)}
+.meta{margin-top:34px;color:var(--muted);font-size:13px}
+.meta a{color:var(--accent3)}
+</style>
+</head>
+<body>
+<div class="logo">🐋</div>
+<h1>DeepSeek <span>Skin Studio</span></h1>
+<p class="sub"><b>给智能换一身衣服。</b>一张图，一套皮肤——为 DeepSeek Harness Web UI 提供<b>书签 / CDP / 原生插件</b>三通道换肤、可视化工坊与 13 套内置主题，并导出 DSH-SKIN-SPEC 标准皮肤包。</p>
+<div class="badges">
+  <span class="badge">🔌 <b>三通道</b>注入</span>
+  <span class="badge">🎨 <b>13 套</b>内置主题</span>
+  <span class="badge">🖼 一张图自动取色</span>
+  <span class="badge">📦 <b>DSH-SKIN-SPEC</b> v0.1</span>
+  <span class="badge">🐋 鲸鱼娘同款治愈系</span>
+</div>
+<div class="cta">
+  <a class="btn primary" href="studio/">打开可视化工坊</a>
+  <a class="btn ghost" href="https://github.com/JueMing2049/deepseek-skin-studio">GitHub 仓库</a>
+  <a class="btn ghost" href="https://github.com/JueMing2049/deepseek-skin-studio/blob/main/docs/manual.md">完整手册</a>
+</div>
+<div class="meta">社区项目 · 非 DeepSeek 官方 · MIT 许可 · 灵感致谢 <a href="https://dreamskin.cc">DreamSkin.cc</a> 与 <a href="https://github.com/HeiGeAi/heige-codex-skin-studio">HeiGe</a> / <a href="https://github.com/cdredfox/workbuddy-skin-studio">cdredfox</a></div>
+</body>
+</html>

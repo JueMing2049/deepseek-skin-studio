@@ -10,7 +10,7 @@
 ## 1. 获取仓库
 
 ```bash
-git clone https://github.com/MetaSkin/deepseek-skin-studio.git
+git clone https://github.com/JueMing2049/deepseek-skin-studio.git
 cd deepseek-skin-studio
 ```
 

@@ -13,7 +13,7 @@
 ![DSH](https://img.shields.io/badge/DeepSeek%20Harness-developer%20preview-4d6bfe)
 ![Node](https://img.shields.io/badge/node-%3E%3D22-brightgreen)
 
-[快速开始](#快速开始) · [可视化工坊](studio/index.html) · [主题提示词库](docs/theme-prompts.md) · [完整手册](docs/manual.md) · [晒图区](https://github.com/MetaSkin/deepseek-skin-studio/discussions) · [English](README.en.md)
+[快速开始](#快速开始) · [可视化工坊](studio/index.html) · [主题提示词库](docs/theme-prompts.md) · [完整手册](docs/manual.md) · [晒图区](https://github.com/JueMing2049/deepseek-skin-studio/discussions) · [English](README.en.md)
 
 </div>
 

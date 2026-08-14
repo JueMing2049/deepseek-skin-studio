@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ocean-abyss",
+  "name": "深海 Ocean Abyss",
+  "hero": "ocean-abyss.png",
+  "colors": {
+    "accent": "#0ea5e9", "secondary": "#2563eb", "accent3": "#06b6d4",
+    "surface": "#06121f", "panel": "#0a1b2e", "bg": "#040b14",
+    "border": "#12304a", "text": "#dceef7", "muted": "#6f93a8",
+    "ok": "#2dd4bf", "warn": "#fbbf24", "danger": "#fb7185"
+  }
+}

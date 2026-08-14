@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "cyber-neon",
+  "name": "赛博霓虹 Cyber Neon",
+  "hero": "cyber-neon.png",
+  "colors": {
+    "accent": "#f472b6", "secondary": "#22d3ee", "accent3": "#a3e635",
+    "surface": "#120a1e", "panel": "#1a0f2c", "bg": "#0a0614",
+    "border": "#33204f", "text": "#f0e6ff", "muted": "#9c86c4",
+    "ok": "#4ade80", "warn": "#facc15", "danger": "#fb7185"
+  }
+}

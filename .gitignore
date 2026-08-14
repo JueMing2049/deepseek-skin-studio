@@ -1,0 +1,9 @@
+# 构建产物（可由 CLI 重新生成）
+dist/
+
+# Node
+node_modules/
+
+# 系统
+.DS_Store
+Thumbs.db

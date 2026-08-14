@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek Skin Studio · 可视化工坊（离线版）</title>
+<style>
+:root{--acc:#4d6bfe;--acc2:#22d3ee;--acc3:#a78bfa;--surf:#0d1526;--panel:#111b31;--bg:#070b14;--border:#1d2a45;--text:#e6ebf5;--muted:#8b98b3;--ok:#34d399;--warn:#fbbf24;--danger:#f87171}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#05070d;color:#e6ebf5;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;height:100vh;display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:14px;padding:10px 18px;border-bottom:1px solid #1d2a45;background:#0a0f1d;flex-wrap:wrap}
+.brand{font-weight:800;font-size:16px}
+.brand b{background:linear-gradient(90deg,#6d8bff,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+header .btns{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+button{border:1px solid #27385e;background:#0d1526;color:#c9d6f5;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:13px}
+button:hover{border-color:#4d6bfe;color:#fff}
+button.primary{background:linear-gradient(90deg,#4d6bfe,#22d3ee);color:#fff;border:none;font-weight:700}
+main{flex:1;display:grid;grid-template-columns:240px 1fr 260px;min-height:0}
+@media(max-width:1000px){main{grid-template-columns:1fr;overflow:auto}}
+.pane{padding:14px;overflow:auto;border-right:1px solid #1d2a45}
+.pane h3{font-size:13px;color:#8b98b3;margin-bottom:10px}
+.tlist .th{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #1d2a45;border-radius:9px;margin-bottom:8px;cursor:pointer;background:#0a0f1d}
+.tlist .th:hover,.tlist .th.on{border-color:#4d6bfe}
+.tlist .dot{width:14px;height:14px;border-radius:50%;flex:none;background:var(--c)}
+.tlist .nm{font-size:13px;flex:1}
+.tlist .tag{font-size:10px;color:#5d6b8a}
+.upload{margin-top:12px}
+.upload input{display:none}
+.preview{display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(1000px 500px at 70% -20%,rgba(77,107,254,.12),transparent 60%),#070b14}
+.mock{width:min(680px,100%);border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg);box-shadow:0 20px 60px rgba(0,0,0,.5);font-size:13px}
+.mtop{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--panel);border-bottom:1px solid var(--border)}
+.mtop .logo{width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,var(--acc),var(--acc2))}
+.mtop .ttl{font-weight:700}
+.mtop .tag2{margin-left:auto;font-size:10px;color:var(--muted);border:1px solid var(--border);padding:2px 8px;border-radius:99px}
+.mbody{display:grid;grid-template-columns:170px 1fr;min-height:340px}
+.mside{background:var(--panel);border-right:1px solid var(--border);padding:10px}
+.mside .item{padding:7px 10px;border-radius:8px;color:var(--muted);font-size:12.5px;margin-bottom:2px}
+.mside .item.on{background:color-mix(in srgb,var(--acc) 22%,transparent);color:var(--text)}
+.mchat{padding:16px;background:var(--bg);display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:9px 12px;border-radius:12px}
+.msg.u{align-self:flex-end;background:color-mix(in srgb,var(--acc) 28%,var(--panel));color:var(--text);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent)}
+.msg.a{align-self:flex-start;background:var(--panel);border:1px solid var(--border);color:var(--text)}
+.msg .meta{font-size:10px;color:var(--muted);margin-bottom:4px}
+.tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.tool{font-size:10.5px;border:1px solid var(--border);color:var(--muted);padding:2px 8px;border-radius:99px}
+.tool b{color:var(--acc2)}
+.minput{margin-top:auto;display:flex;gap:8px}
+.minput input{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:9px 12px;font-size:13px}
+.minput button{background:linear-gradient(90deg,var(--acc),var(--acc2));border:none;color:#fff;font-weight:700}
+.cp{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center}
+.cp label{font-size:12px;color:var(--muted)}
+.cp input[type=color]{width:34px;height:24px;border:none;background:none;cursor:pointer;padding:0}
+.mode{font-size:11px;color:var(--muted);margin:8px 0}
+.mode b{color:var(--acc2)}
+.saved{position:fixed;bottom:18px;right:18px;background:#0f9d6b;color:#fff;padding:8px 16px;border-radius:10px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none}
+.saved.show{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><b>DeepSeek Skin Studio</b> · 可视化工坊 v0.1</div>
+  <div class="btns">
+    <input type="file" id="imgfile" accept="image/png,image/jpeg,image/webp"><button onclick="document.getElementById('imgfile').click()">🖼 上传图片取色</button>
+    <button id="btnName" onclick="renameTheme()">✏️ 命名</button>
+    <button onclick="exportJson()">⬇ theme.json</button>
+    <button onclick="exportCss()">⬇ theme.css</button>
+    <button class="primary" onclick="exportSpec()">⬇ DSH-SKIN-SPEC 皮肤包</button>
+  </div>
+</header>
+<main>
+  <div class="pane">
+    <h3>内置主题（13）</h3>
+    <div class="tlist" id="tlist"></div>
+    <h3 style="margin-top:16px">自定义</h3>
+    <div class="upload">
+      <p style="font-size:12px;color:#5d6b8a">上传一张图，自动提取主色/辅色/面板/文字，生成一套完整皮肤。</p>
+    </div>
+  </div>
+  <div class="preview"><div class="mock">
+    <div class="mtop"><div class="logo"></div><div class="ttl">DeepSeek Harness</div><div class="tag2">Web GUI · 主题预览</div></div>
+    <div class="mbody">
+      <div class="mside">
+        <div class="item on">🗨 新会话</div>
+        <div class="item">📁 会话历史</div>
+        <div class="item">🧩 插件市场</div>
+        <div class="item">🎨 皮肤中心</div>
+        <div class="item">⚙ 设置</div>
+      </div>
+      <div class="mchat">
+        <div class="msg u"><div class="meta">我</div>帮我写一份周报</div>
+        <div class="msg a"><div class="meta">DeepSeek · agent</div>好的，我先制定计划供你确认：
+          <div class="tools"><span class="tool">📋 <b>plan</b> 计划审批</span><span class="tool">🛡 <b>sandbox</b> 隔离执行</span><span class="tool">✅ <b>goal</b> 可验收</span></div>
+        </div>
+        <div class="msg a"><div class="meta">DeepSeek · 工具</div>✓ 已生成周报（Markdown）· 可回滚</div>
+        <div class="minput"><input placeholder="继续输入任务…"><button>发送</button></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="pane" id="rightpane">
+    <h3>调色板 <span id="modetag" class="mode"></span></h3>
+    <div class="cp"></div>
+    <div class="mode" id="modehint">surface 明度决定深浅（&gt;140 为浅色）</div>
+  </div>
+</main>
+<div class="saved" id="saved">已复制 / 导出</div>
+
+<script>
+const BUILTIN=[
+ {id:'galaxy-deep',name:'深空银河 Galaxy',colors:{accent:'#4d6bfe',secondary:'#22d3ee',accent3:'#a78bfa',surface:'#0d1526',panel:'#111b31',bg:'#070b14',border:'#1d2a45',text:'#e6ebf5',muted:'#8b98b3',ok:'#34d399',warn:'#fbbf24',danger:'#f87171'}},
+ {id:'mist-minimal',name:'雾白极简 Mist',colors:{accent:'#3563e9',secondary:'#0ea5e9',accent3:'#7c5cff',surface:'#ffffff',panel:'#f1f4f9',bg:'#f6f8fb',border:'#dde3ec',text:'#1c2433',muted:'#5a6578',ok:'#0f9d6b',warn:'#d97706',danger:'#dc2626'}},
+ {id:'celadon-ink',name:'青瓷国风 Celadon',colors:{accent:'#7fae9a',secondary:'#5f8f7c',accent3:'#c8a05a',surface:'#211a12',panel:'#292114',bg:'#17120c',border:'#3a3226',text:'#efe7d6',muted:'#a89a80',ok:'#6fae8f',warn:'#d9a441',danger:'#c95f52'}},
+ {id:'aurora-borealis',name:'极光 Aurora',colors:{accent:'#2dd4bf',secondary:'#a78bfa',accent3:'#4ade80',surface:'#0b1220',panel:'#101a2c',bg:'#060a14',border:'#1c2c44',text:'#e2f0ee',muted:'#7d9a96',ok:'#34d399',warn:'#fbbf24',danger:'#f87171'}},
+ {id:'cyber-neon',name:'赛博霓虹 Cyber Neon',colors:{accent:'#f472b6',secondary:'#22d3ee',accent3:'#a3e635',surface:'#120a1e',panel:'#1a0f2c',bg:'#0a0614',border:'#33204f',text:'#f0e6ff',muted:'#9c86c4',ok:'#4ade80',warn:'#facc15',danger:'#fb7185'}},
+ {id:'sunset-dunes',name:'落日余晖 Sunset',colors:{accent:'#ea7a2f',secondary:'#d97706',accent3:'#b45309',surface:'#fdf6ee',panel:'#f7ead9',bg:'#fbf2e4',border:'#e8d3b6',text:'#3b2a1a',muted:'#8a6a4d',ok:'#4d7c0f',warn:'#d97706',danger:'#b91c1c'}},
+ {id:'forest-mist',name:'森林晨雾 Forest',colors:{accent:'#166534',secondary:'#15803d',accent3:'#4d7c0f',surface:'#f4f8f2',panel:'#e8f0e3',bg:'#f0f6ea',border:'#d2dfc7',text:'#1f2d1c',muted:'#5f7057',ok:'#15803d',warn:'#b45309',danger:'#b91c1c'}},
+ {id:'ocean-abyss',name:'深海 Ocean Abyss',colors:{accent:'#0ea5e9',secondary:'#2563eb',accent3:'#06b6d4',surface:'#06121f',panel:'#0a1b2e',bg:'#040b14',border:'#12304a',text:'#dceef7',muted:'#6f93a8',ok:'#2dd4bf',warn:'#fbbf24',danger:'#fb7185'}},
+ {id:'sakura-breeze',name:'樱花 Sakura',colors:{accent:'#db2777',secondary:'#f472b6',accent3:'#fb7185',surface:'#fff5f7',panel:'#fde8ee',bg:'#fef1f4',border:'#f5cfdb',text:'#3d1f28',muted:'#9c6674',ok:'#15803d',warn:'#d97706',danger:'#be123c'}},
+ {id:'night-knight',name:'暗夜骑士 Night',colors:{accent:'#ef4444',secondary:'#f8fafc',accent3:'#94a3b8',surface:'#0f1115',panel:'#16181d',bg:'#08090b',border:'#26292f',text:'#e5e7eb',muted:'#8b919a',ok:'#22c55e',warn:'#eab308',danger:'#ef4444'}},
+ {id:'vaporwave',name:'蒸汽波 Vaporwave',colors:{accent:'#f472b6',secondary:'#22d3ee',accent3:'#c084fc',surface:'#1a1030',panel:'#221542',bg:'#120a24',border:'#3b2160',text:'#f3e8ff',muted:'#a78bbf',ok:'#34d399',warn:'#facc15',danger:'#fb7185'}},
+ {id:'panda-classic',name:'熊猫经典 Panda',colors:{accent:'#16a34a',secondary:'#111827',accent3:'#374151',surface:'#ffffff',panel:'#f3f4f6',bg:'#fafafa',border:'#d1d5db',text:'#111827',muted:'#6b7280',ok:'#16a34a',warn:'#d97706',danger:'#dc2626'}},
+ {id:'whale-girl',name:'鲸鱼娘 Whale Girl',colors:{accent:'#2f6fe4',secondary:'#38bdf8',accent3:'#7dd3fc',surface:'#0b1a2e',panel:'#0e2138',bg:'#050d1a',border:'#16304e',text:'#e6f0ff',muted:'#8fa8cc',ok:'#34d399',warn:'#fbbf24',danger:'#f87171'}}
+];
+const FIELDS=[['accent','主色'],['secondary','辅色'],['accent3','第三色'],['surface','面板底色'],['panel','次级面板'],['bg','背景'],['border','边框'],['text','文字'],['muted','弱文字'],['ok','成功'],['warn','警告'],['danger','危险']];
+let cur={id:'custom',name:'自定义主题',colors:{...BUILTIN[0].colors}};
+const $=s=>document.querySelector(s);
+function apply(){
+  const r=document.documentElement;
+  Object.keys(cur.colors).forEach(k=>r.style.setProperty('--'+k,cur.colors[k]));
+  $('#modetag').innerHTML='<b>'+ (lum(cur.colors.surface)>140?'浅色':'深色') +'</b> · '+cur.name;
+  document.querySelectorAll('#tlist .th').forEach(el=>el.classList.toggle('on',el.dataset.id===cur.id));
+}
+function lum(hex){const n=parseInt(hex.slice(1),16);return 0.299*((n>>16)&255)+0.587*((n>>8)&255)+0.114*(n&255)}
+function hex(r,g,b){return '#'+[r,g,b].map(x=>Math.max(0,Math.min(255,Math.round(x))).toString(16).padStart(2,'0')).join('')}
+function mix(a,b,t){const pa=parseInt(a.slice(1),16),pb=parseInt(b.slice(1),16);const ch=i=>((pa>>i)&255)*(1-t)+((pb>>i)&255)*t;return hex(ch(16),ch(8),ch(0))}
+/* 列表 */
+const tl=$('#tlist');
+BUILTIN.forEach(t=>{
+  const d=document.createElement('div');d.className='th';d.dataset.id=t.id;
+  d.innerHTML='<span class="dot" style="--c:'+t.colors.accent+'"></span><span class="nm">'+t.name+'</span><span class="tag">'+(lum(t.colors.surface)>140?'浅':'深')+'</span>';
+  d.onclick=()=>{cur={id:t.id,name:t.name,colors:{...t.colors}};apply()};
+  tl.appendChild(d);
+});
+/* 调色板 */
+const cp=$('.cp');
+FIELDS.forEach(([k,label])=>{
+  const l=document.createElement('label');l.textContent=label;
+  const i=document.createElement('input');i.type='color';i.value=cur.colors[k];
+  i.oninput=()=>{cur.colors[k]=i.value;cur.id='custom';apply()};
+  cp.appendChild(l);cp.appendChild(i);
+});
+/* 图片取色 */
+$('#imgfile').onchange=e=>{
+  const f=e.target.files[0];if(!f)return;
+  const img=new Image();img.onload=()=>{
+    const cv=document.createElement('canvas');cv.width=48;cv.height=48;
+    const g=cv.getContext('2d');g.drawImage(img,0,0,48,48);
+    const d=g.getImageData(0,0,48,48).data;
+    const px=[];for(let i=0;i<d.length;i+=4){const r=d[i],g2=d[i+1],b=d[i+2];if(d[i+3]<128)continue;
+      const l=0.299*r+0.587*g2+0.114*b,mx=Math.max(r,g2,b),mn=Math.min(r,g2,b);
+      px.push({r,g:g2,b,l,s:l>0?(mx-mn)/l:0});}
+    if(!px.length)return;
+    const sorted=px.slice().sort((a,b)=>b.s-a.s);
+    const acc=sorted.slice(0,Math.max(1,Math.floor(px.length*0.06))).reduce((o,p)=>({r:o.r+p.r,g:o.g+p.g,b:o.b+p.b}),{r:0,g:0,b:0});
+    const n=Math.max(1,Math.floor(px.length*0.06));
+    const dark=px.slice().sort((a,b)=>a.l-b.l).slice(0,Math.floor(px.length*0.2)).reduce((o,p)=>({r:o.r+p.r,g:o.g+p.g,b:o.b+p.b}),{r:0,g:0,b:0});
+    const lite=px.slice().sort((a,b)=>b.l-a.l).slice(0,Math.floor(px.length*0.2)).reduce((o,p)=>({r:o.r+p.r,g:o.g+p.g,b:o.b+p.b}),{r:0,g:0,b:0});
+    const m1=Math.floor(px.length*0.2),m2=n;
+    const accC=hex(acc.r/m2,acc.g/m2,acc.b/m2);
+    const surfC=hex(lite.r/m1,lite.g/m1,lite.b/m1);
+    const bgC=hex(dark.r/m1,dark.g/m1,dark.b/m1);
+    cur={id:'custom',name:'我的图片主题',colors:{
+      accent:accC,secondary:hex(acc.r/m2*0.55,acc.g/m2*0.75,acc.b/m2*1.05),accent3:hex(acc.r/m2*0.75,acc.g/m2*0.55,acc.b/m2*1.1),
+      surface:surfC,panel:mix(surfC,bgC,0.35),bg:bgC,border:mix(surfC,bgC,0.5),
+      text:lum(surfC)>140?'#1c2433':'#e6ebf5',muted:lum(surfC)>140?'#5a6578':'#8b98b3',
+      ok:'#22c55e',warn:'#eab308',danger:'#ef4444'}};
+    document.querySelectorAll('.cp input').forEach(i=>i.value=cur.colors[i.dataset&&i.dataset.k]||i.value);
+    FIELDS.forEach(([k],idx)=>{document.querySelectorAll('.cp input')[idx*1+0].value=cur.colors[k]});
+    apply();flash('已从图片提取配色');
+  };
+  img.src=URL.createObjectURL(f);
+};
+/* 命名/导出 */
+function renameTheme(){const nm=prompt('主题名',cur.name);if(nm){cur.name=nm;apply()}}
+function flash(m){const s=$('#saved');s.textContent=m;s.classList.add('show');setTimeout(()=>s.classList.remove('show'),1600)}
+function themeObj(){return{schemaVersion:1,id:cur.id,name:cur.name,colors:cur.colors}}
+function dl(name,text,mime){const b=new Blob([text],{type:mime});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();flash('已导出 '+name)}
+function exportJson(){dl(cur.id+'.json',JSON.stringify(themeObj(),null,2),'application/json')}
+function exportCss(){const c=cur.colors;dl(cur.id+'.css',`:root{\n  --dsh-bg:${c.bg};\n  --dsh-bg-2:${c.bg};\n  --dsh-panel:${c.surface};\n  --dsh-panel-2:${c.panel};\n  --dsh-border:${c.border};\n  --dsh-border-2:${c.border};\n  --dsh-text:${c.text};\n  --dsh-muted:${c.muted};\n  --dsh-dim:${c.muted};\n  --dsh-accent:${c.accent};\n  --dsh-accent-2:${c.secondary};\n  --dsh-accent-3:${c.accent3};\n  --dsh-ok:${c.ok};\n  --dsh-warn:${c.warn};\n  --dsh-danger:${c.danger};\n  --dsh-radius:14px;\n}\n`,'text/css')}
+function exportSpec(){const c=cur.colors;const m={dsh:{kind:'skin',specVersion:'0.1',name:cur.id,displayName:cur.name,version:'0.1.0',author:'DeepSeek-Skin-Studio',license:'MIT',description:cur.name+' · 由 DeepSeek-Skin-Studio 导出',tags:[],compat:{dsh:'>=0.1.0-rc.5'}}};
+  dl('manifest.json',JSON.stringify(m,null,2),'application/json');
+  setTimeout(()=>exportCss(),300);
+}
+apply();
+</script>
+</body>
+</html>

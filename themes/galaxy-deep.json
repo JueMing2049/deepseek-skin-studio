@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "galaxy-deep",
+  "name": "深空银河 Galaxy",
+  "hero": "galaxy-deep.png",
+  "colors": {
+    "accent": "#4d6bfe", "secondary": "#22d3ee", "accent3": "#a78bfa",
+    "surface": "#0d1526", "panel": "#111b31", "bg": "#070b14",
+    "border": "#1d2a45", "text": "#e6ebf5", "muted": "#8b98b3",
+    "ok": "#34d399", "warn": "#fbbf24", "danger": "#f87171"
+  }
+}

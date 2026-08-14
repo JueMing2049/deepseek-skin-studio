@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "sakura-breeze",
+  "name": "樱花 Sakura Breeze",
+  "hero": "sakura-breeze.png",
+  "colors": {
+    "accent": "#db2777", "secondary": "#f472b6", "accent3": "#fb7185",
+    "surface": "#fff5f7", "panel": "#fde8ee", "bg": "#fef1f4",
+    "border": "#f5cfdb", "text": "#3d1f28", "muted": "#9c6674",
+    "ok": "#15803d", "warn": "#d97706", "danger": "#be123c"
+  }
+}

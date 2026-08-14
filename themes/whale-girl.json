@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "whale-girl",
+  "name": "鲸鱼娘 Whale Girl",
+  "hero": "whale-girl.png",
+  "colors": {
+    "accent": "#2f6fe4", "secondary": "#38bdf8", "accent3": "#7dd3fc",
+    "surface": "#0b1a2e", "panel": "#0e2138", "bg": "#050d1a",
+    "border": "#16304e", "text": "#e6f0ff", "muted": "#8fa8cc",
+    "ok": "#34d399", "warn": "#fbbf24", "danger": "#f87171"
+  }
+}

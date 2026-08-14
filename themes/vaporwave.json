@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "vaporwave",
+  "name": "蒸汽波 Vaporwave",
+  "hero": "vaporwave.png",
+  "colors": {
+    "accent": "#f472b6", "secondary": "#22d3ee", "accent3": "#c084fc",
+    "surface": "#1a1030", "panel": "#221542", "bg": "#120a24",
+    "border": "#3b2160", "text": "#f3e8ff", "muted": "#a78bbf",
+    "ok": "#34d399", "warn": "#facc15", "danger": "#fb7185"
+  }
+}

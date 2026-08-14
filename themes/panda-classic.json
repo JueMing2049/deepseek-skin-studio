@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "panda-classic",
+  "name": "熊猫经典 Panda",
+  "hero": "panda-classic.png",
+  "colors": {
+    "accent": "#16a34a", "secondary": "#111827", "accent3": "#374151",
+    "surface": "#ffffff", "panel": "#f3f4f6", "bg": "#fafafa",
+    "border": "#d1d5db", "text": "#111827", "muted": "#6b7280",
+    "ok": "#16a34a", "warn": "#d97706", "danger": "#dc2626"
+  }
+}

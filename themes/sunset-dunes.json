@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "sunset-dunes",
+  "name": "落日余晖 Sunset Dunes",
+  "hero": "sunset-dunes.png",
+  "colors": {
+    "accent": "#ea7a2f", "secondary": "#d97706", "accent3": "#b45309",
+    "surface": "#fdf6ee", "panel": "#f7ead9", "bg": "#fbf2e4",
+    "border": "#e8d3b6", "text": "#3b2a1a", "muted": "#8a6a4d",
+    "ok": "#4d7c0f", "warn": "#d97706", "danger": "#b91c1c"
+  }
+}

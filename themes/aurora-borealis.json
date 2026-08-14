@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "aurora-borealis",
+  "name": "极光 Aurora",
+  "hero": "aurora-borealis.png",
+  "colors": {
+    "accent": "#2dd4bf", "secondary": "#a78bfa", "accent3": "#4ade80",
+    "surface": "#0b1220", "panel": "#101a2c", "bg": "#060a14",
+    "border": "#1c2c44", "text": "#e2f0ee", "muted": "#7d9a96",
+    "ok": "#34d399", "warn": "#fbbf24", "danger": "#f87171"
+  }
+}

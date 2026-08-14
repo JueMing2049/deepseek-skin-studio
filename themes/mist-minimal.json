@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "mist-minimal",
+  "name": "雾白极简 Mist",
+  "hero": "mist-minimal.png",
+  "colors": {
+    "accent": "#3563e9", "secondary": "#0ea5e9", "accent3": "#7c5cff",
+    "surface": "#ffffff", "panel": "#f1f4f9", "bg": "#f6f8fb",
+    "border": "#dde3ec", "text": "#1c2433", "muted": "#5a6578",
+    "ok": "#0f9d6b", "warn": "#d97706", "danger": "#dc2626"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "celadon-ink",
+  "name": "青瓷国风 Celadon",
+  "hero": "celadon-ink.png",
+  "colors": {
+    "accent": "#7fae9a", "secondary": "#5f8f7c", "accent3": "#c8a05a",
+    "surface": "#211a12", "panel": "#292114", "bg": "#17120c",
+    "border": "#3a3226", "text": "#efe7d6", "muted": "#a89a80",
+    "ok": "#6fae8f", "warn": "#d9a441", "danger": "#c95f52"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "night-knight",
+  "name": "暗夜骑士 Night Knight",
+  "hero": "night-knight.png",
+  "colors": {
+    "accent": "#ef4444", "secondary": "#f8fafc", "accent3": "#94a3b8",
+    "surface": "#0f1115", "panel": "#16181d", "bg": "#08090b",
+    "border": "#26292f", "text": "#e5e7eb", "muted": "#8b919a",
+    "ok": "#22c55e", "warn": "#eab308", "danger": "#ef4444"
+  }
+}

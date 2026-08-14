@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "forest-mist",
+  "name": "森林晨雾 Forest Mist",
+  "hero": "forest-mist.png",
+  "colors": {
+    "accent": "#166534", "secondary": "#15803d", "accent3": "#4d7c0f",
+    "surface": "#f4f8f2", "panel": "#e8f0e3", "bg": "#f0f6ea",
+    "border": "#d2dfc7", "text": "#1f2d1c", "muted": "#5f7057",
+    "ok": "#15803d", "warn": "#b45309", "danger": "#b91c1c"
+  }
+}

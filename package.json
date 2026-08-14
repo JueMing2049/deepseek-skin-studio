@@ -1,0 +1,19 @@
+{
+  "name": "@metaskin/dsh-skin-studio",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 换肤工作室：一张图一套皮肤。三通道注入（书签/CDP/原生插件）+ 可视化工坊 + 13 套内置主题 + DSH-SKIN-SPEC 导出。社区项目。",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "keywords": ["dsh", "dsh-plugin", "deepseek-harness", "deepseek", "skin", "theme", "cordis", "theming"],
+  "dsh": {
+    "kind": "plugin",
+    "name": "deepseek-skin-studio",
+    "displayName": "DeepSeek Skin Studio",
+    "description": "DSH Web UI 换肤：书签/CDP/原生插件三通道 + 可视化工坊 + 13 套主题 + DSH-SKIN-SPEC v0.1 皮肤包导出",
+    "version": "0.1.0",
+    "compat": { "dsh": ">=0.1.0-rc.5" },
+    "category": ["skin", "theme", "ui", "marketplace"],
+    "entry": "studio/index.html"
+  }
+}

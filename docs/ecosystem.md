@@ -73,7 +73,8 @@
 
 ## 4. 待办清单（生态卡位）
 
-- [ ] 向 5 个 awesome 列表提交 PR 收录 deepseek-skin-studio
-- [ ] 向 bradeGithub/DSH-Plugins-Marketplace 提交插件包
+- [x] 向 2 个 awesome 列表提交 PR（[awesome-dsh-plugin/pull/245](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/245) · [awesome-dsh-plugins/pull/118](https://github.com/AdamPlatin123/awesome-dsh-plugins/pull/118)）
+- [x] 市场一：DSH-Plugins-Marketplace 自动收录（registry.json 已含 JueMing2049/deepseek-skin-studio）
+- [x] 市场二：dsh-suite 收录申请 issue（[whyihaveyou/dsh-suite#6](https://github.com/whyihaveyou/dsh-suite/issues/6)）
 - [ ] 与 dsh-web-ui / dsh-deep-whale / deepseek-harness-desktop 建立互链与兼容声明
 - [ ] 生态数据纳入报告第 06 章与 GEO 内容矩阵
